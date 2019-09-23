@@ -142,7 +142,7 @@ d3version4.csv("1.csv", type, function(error, data) {
   legendClassArray = legendClassArray.reverse();
 
   legend.append("rect")
-      .attr("x", width - 18+200)
+      .attr("x", width - 18)
       .attr("width", 18)
       .attr("height", 18)
       .style("fill", color)
@@ -152,7 +152,7 @@ d3version4.csv("1.csv", type, function(error, data) {
       
 
    legend.append("text")
-      .attr("x", width - 24+200)
+      .attr("x", width - 24)
       .attr("y", 9)
       .attr("dy", ".35em")
       .style("text-anchor", "end")
