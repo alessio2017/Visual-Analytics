@@ -2,6 +2,7 @@ import pandas as pd
 import re
 import csv
 import random
+import datetime
 ''' We don't use the following comment code
 with open('finalFile.csv','r') as fin,  open ('Rain.csv','w') as fout:
 
@@ -138,11 +139,11 @@ with open('US_Accidents_May19.csv','r') as fin,  open ('outfile2.csv','w') as fo
 '''		
 filename = "outfile2.csv"
 n = sum(1 for line in open(filename))-1
-s = 10000    	
+s = 9000    	
 skip = sorted(random.sample(range(1,n+1),n-s))
 f=pd.read_csv(filename,skiprows=skip)
-
-keep_col = ['Severity','State','Temperature(F)','Wind_Chill(F)','Humidity(%)','Pressure(in)','Visibility(mi)','Wind_Speed(mph)','Precipitation(in)']
+keep_col = ['State','Severity','End_Time','Temperature(F)','Wind_Chill(F)','Visibility(mi)','Precipitation(in)']
+#keep_col = ['Severity','State','Temperature(F)','Wind_Chill(F)','Humidity(%)','Pressure(in)','Visibility(mi)','Wind_Speed(mph)','Precipitation(in)']
 
 
 new_f = f[keep_col]
@@ -157,9 +158,32 @@ with open('finalFile2.csv','r') as fin,  open ('1k-6num-attrs.csv','w') as fout:
     writer.writerow(col)
     
     for row in csv.reader(fin, delimiter=','):
-    	if row[2] is "" or row[3] is "" or row[4] is "" or row[5] is "" or row[6] is "" or row[7] is "" or row[8] is "":
+    	#if row[2] is "" or row[3] is "" or row[4] is "" or row[5] is "" or row[6] is "" or row[7] is "" or row[8] is "":
+    	if row[3] is "" or row[4] is "" or row[5] is "" or row[6] is "":
     		continue
     	else:
+    		y = row[2]
+    		y = y[5:10]
+    		month = y[0:2]
+    		day = y[3:5]
+    		x = datetime.datetime(2018,int(month),int(day))
+    		x = x.strftime("%A")
+    		
+    		print(x)
+    		if x == "Monday":
+    			row[2] = 1
+    		if x == "Tuesday":
+    			row[2] = 2
+    		if x == "Wednesday":
+    			row[2] = 3
+    		if x == "Thursday":
+    			row[2] = 4
+    		if x == "Friday":
+    			row[2] = 5
+    		if x == "Saturday":
+    			row[2] = 6
+    		if x == "Sunday":
+    			row[2] = 7
     		writer.writerow(row)
     '''
     	if row[2] is "":

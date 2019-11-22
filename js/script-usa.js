@@ -1,7 +1,7 @@
 
 //Width and height of map
-var width = 650;
-var height = 408;
+var width1 = 650;
+var height1 = 408;
 
 //
 
@@ -50,7 +50,7 @@ var months_names = [
     });
 
   var g = d3version4.select("#slider_div").append("svg")
-    .attr("width", width)
+    .attr("width", width1)
     .attr("height", 80)
     .append("g")
     .attr("transform", "translate(45,30)");
@@ -59,9 +59,11 @@ var months_names = [
 /******************************/
 
 
+
+
 // D3 Projection
 var projection = d3version3.geo.albersUsa()
-				   .translate([width/2, height/2])    // translate to center of screen
+				   .translate([width1/2, height1/2])    // translate to center of screen
 				   .scale([800]);          // scale things down so see entire US
         
 // Define path generator
@@ -76,12 +78,12 @@ var legendText = ["Cities Lived", "States Lived", "States Visited", "Nada"];
 
 //Create SVG element and append map to the SVG
 var usa_div = d3version3.select("#usa_div")
-			.attr("width", width)
-			.attr("height", height);
+			.attr("width", width1)
+			.attr("height", height1);
 
 var svg = d3version3.select("#usa_svg")
-			.attr("width", width)
-			.attr("height", height)
+			.attr("width", width1)
+			.attr("height", height1)
 			.append("g");
 // Append Div for tooltip to SVG
 var div = d3version3.select("body")
@@ -132,8 +134,7 @@ var statesStats_arrive = [];
 
 
 // Load in my states data!
-d3version3.csv("results.csv", function(data) {
- 	console.log(data)
+d3version3.csv("FDB/results.csv", function(data) {
     for (var i = 0; i < data.length; i++) {
 
         
@@ -242,15 +243,20 @@ patty = svg.selectAll("path")
 });
 
 function highlightBar(e){
-    selected_bar = d3version4.selectAll(".bar").filter(function(d){ return jsonStates[d.s] == e.properties.name})
+	
+    selected_bar = d3version4.selectAll(".bars.classDay").filter(function(d){ return jsonStates[d.mystate] == e.properties.name})
     selected_bar.style("fill", "rgb(202, 75, 65)")
-    
+
+    selected_bar = d3version4.selectAll(".bars.classNight").filter(function(d){ return jsonStates[d.mystate] == e.properties.name})
+    selected_bar.style("fill", "rgb(202, 75, 65)")
+
 }
 
 function cancelHighlightBar(e){
-    selected_bar = d3version4.selectAll(".bar").filter(function(d){ return jsonStates[d.s] == e.properties.name})
-    selected_bar.style("fill", "rgb(99, 148, 186)")
-    
+    selected_bar = d3version4.selectAll(".bars.classDay").filter(function(d){ return jsonStates[d.mystate] == e.properties.name})
+    selected_bar.style("fill", "rgb(255,224,130)")
+    selected_bar = d3version4.selectAll(".bars.classNight").filter(function(d){ return jsonStates[d.mystate] == e.properties.name})
+    selected_bar.style("fill", "rgb(129,212,250)")
 }
 
 var selected = [];
@@ -261,15 +267,19 @@ for(i in jsonStates){
 function handleMouseOver(e){
     //var gto = d3version3.selectAll(".bar").filter(function(d){ return jsonStates[d.s] == e.properties.name }).style("fill","black")
     if(selected[e.properties.name]){
-    	console.log(e.properties.name)
         d3version4.selectAll("#parallel-div .background path").attr("class","foreground")
-        d3version4.selectAll("#parallel-div .foreground path").attr("class","foreground")
+        d3version4.selectAll("#parallel-div .foreground path[stroke=yellow]").attr("class","pppp4")
+        d3version4.selectAll("#parallel-div .foreground path[stroke=blue]").attr("class","pppp3")
+        d3version4.selectAll("#parallel-div .foreground path[stroke=green]").attr("class","pppp2")
+        d3version4.selectAll("#parallel-div .foreground path[stroke=red]").attr("class","pppp1")
+        d3version4.selectAll("#parallel-div .foreground path").style(function(d,i){
+        	console.log(d)
+        })
+        //d3version4.selectAll("#parallel-div .foreground path").attr("class","pppp3")
         //var par_state = d3version4.selectAll("#parallel-div path").filter(function(d){ return jsonStates[d.ORIGIN_STATE_ABR] == e.properties.name }).attr("class","foreground")
         selected[e.properties.name] = false
     }
     else{
-    	console.log("wwwww")
-    	console.log(e.properties.name)
         d3version4.selectAll("#parallel-div .background path").attr("class","backg")
         d3version4.selectAll("#parallel-div .foreground path").attr("class","backg")
         //d3version4.selectAll("#parallel-div path").attr("class","foreground")
@@ -292,13 +302,13 @@ function handleMouseOver(e){
           .attr("transform", function(d, i) { return "translate(0," + ((i * 10) + 300) + ")"; });
 
       legend.append("rect")
-          .attr("x", width - 40 )
+          .attr("x", width1 - 40 )
           .attr("width", 10)
           .attr("height", 10)
           .style("fill", zz);
 
       legend.append("text")
-          .attr("x", width - 45)
+          .attr("x", width1 - 45)
           .attr("y", 5)
           .attr("dy", ".35em")
           .style("text-anchor", "end")
@@ -309,12 +319,12 @@ function handleMouseOver(e){
         .attr("class", "legend")
         .attr("transform", function(d, i) { return "translate(635," + -200 + ") rotate(90) "; })
         .append("text")
-        .attr("x", width - 45)
+        .attr("x", width1 - 45)
         .attr("y", 5)
         .attr("dy", ".35em")
         .style("text-anchor", "end")
         .text(function(d) {return d});
-
+/*qqqq
 
     //--------------------------------------------------------------------------------------------
 
@@ -345,9 +355,9 @@ function handleMouseOver(e){
 
 var stateMean=[]
 
-d3version3.csv('mean_annua.csv', function(data){
-    for(var el in data){
-        el = data[el]
+d3version3.csv('FDB/mean_annua.csv', function(data1){
+    for(var el in data1){
+        el = data1[el]
         stateMean[jsonStates[el.State]] = +el.Counts
     }
     
@@ -359,3 +369,5 @@ function createStdDev(){
         stateStdDev[i] = standardDeviation(statesStats[i])
     }
 }
+
+

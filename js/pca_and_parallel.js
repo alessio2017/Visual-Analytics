@@ -1,5 +1,5 @@
-var PARALLEL_COORDINATES_FILE = "1k-6num-attrs.csv"
-var PCA_FILE = "pca_viz.tsv"
+var PARALLEL_COORDINATES_FILE = "FDB/1k-6num-attrs.csv"
+var PCA_FILE = "FDB/pca_viz.tsv"
 
 
 d3version3.tsv(PCA_FILE, function(error, data) {
@@ -70,28 +70,54 @@ d3version3.tsv(PCA_FILE, function(error, data) {
 		.data(data)
 		.enter().append("circle")
 		//.attr("class", "dot")
+		
 		.attr("fill", function(d, i) {
-			if (d.A == 1) {
-				return "black";
-			} else if (d.A == 2) {
+			if (d.A == 1 && d.D < 5) {
+				return "pink";
+			} else if (d.A == 1 && d.D >= 5) {
 				return "yellow";
-			} else if (d.A == 3){
-				return "blue";
+			} else if (d.A == 2 && d.D < 5){
+				return "pink";
+			} else if (d.A == 2 && d.D >= 5){
+				return "yellow";
+			} else if (d.A == 3 && d.D < 5){
+				return "green";
+			} else if (d.A == 3 && d.D >= 5){
+				return "orange";
+			} else if (d.A == 4 && d.D < 5){
+				return "green";
+			} else if (d.A == 4 && d.D >= 5){
+				return "orange";
 			} else {
-				return "green"
+				return "black"
 			}
 		})
+		/*
+		.attr("fill", function(d, i) {
+			if (d.A <= 4) {
+				return "yellow";
+			} else if (d.A == 5) {
+				return "blue";
+			} else if (d.A == 6){
+				return "green";
+			} else if (d.A == 7){
+				return "pink";
+			} else{
+				console.log(d.A)
+				return "red"
+			}
+		})*/
 		.attr("r", 3.5)
 		.attr("cx", function(d) { return x(d.P1); })
 		.attr("cy", function(d) { return y(d.P2); });
     
         //Legend style
         var colorz = d3version4.scaleOrdinal()
-                  .domain([1,2,3])
-                  .range(["yellow","blue","green"])
+                  .domain([1,2,3,4])
+                  .range(["pink","yellow","green","orange"])
 
         var legend = svg.selectAll(".legend")
-              .data([1,2,3])
+              .data([1,2,3,4])
               .enter().append("g")
               .attr("class", "legend")
               .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
@@ -100,7 +126,12 @@ d3version3.tsv(PCA_FILE, function(error, data) {
               .attr("x", width )
               .attr("width", 15)
               .attr("height", 15)
-              .style("fill", colorz);
+              .style("fill", colorz)
+              .on("mouseover",function(){ d3version4.select(this).style("cursor", "pointer");    })
+      
+    		  .on("click",function(d){ 
+    			console.log(d);
+    		});
 
           legend.append("text")
               .attr("x", width - 10)
@@ -108,15 +139,21 @@ d3version3.tsv(PCA_FILE, function(error, data) {
               .attr("dy", ".35em")
               .style("text-anchor", "end")
               .text(function(d) { 
-				  if (d==1){
-					  return "Severity 2";
+				  if (d == 1){
+					  return "Severity < 3 & Weekdays";
 				  } else if(d == 2) {
-					  return "Severity 3";
+					  return "Severity > 2 & Weekend days";
 				  } else if(d == 3) {
-					  return "Severity 4";
+					  return "Severity > 2 & Weekdays";
+				  } else if(d == 4) {
+				  	  return "Severity < 2 & Weekend days";
 				  }
+				  
 				  return "";
 			  });
+			  
+			
+			  
 });
 
 
@@ -177,7 +214,7 @@ d3version3.csv(PARALLEL_COORDINATES_FILE, function(error, flights) {
 	// Extract the list of dimensions and create a scale for each.
 	console.log(d3version3.keys(flights[0]))
 	x.domain(dimensions = d3version3.keys(flights[0]).filter(function(d) {
-		return d != "State" && d != "Severity" && (y[d] = d3version3.scale.linear()
+		return d != "State" && (y[d] = d3version3.scale.linear()
 		.domain(d3version3.extent(flights, function(p) { return +p[d]; }))
 		.range([height, 0]));
 	}));
@@ -269,13 +306,12 @@ d3version3.csv(PARALLEL_COORDINATES_FILE, function(error, flights) {
     .enter().append("g")
       //.attr("class", "legend")
       .attr("class", function (d) {
-        //legendClassArray.push(d.replace(/\s/g, '')); //remove spaces
+        
         return "legend";
       })
       .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
-
-  //reverse order to match order in which bars are stacked    
-  legendClassArray = legendClassArray.reverse();
+    
+  
 
   legend.append("rect")
       .attr("x", width - 18)
@@ -285,6 +321,8 @@ d3version3.csv(PARALLEL_COORDINATES_FILE, function(error, flights) {
       .attr("id", function (d, i) {
         return "id" + d;
       })
+      .on("mouseover",function(){ d3version4.select(this).style("cursor", "pointer");    })
+      
     .on("click",function(d){  //mouseover o click
    	 	selected_severity = d
 
@@ -292,7 +330,7 @@ d3version3.csv(PARALLEL_COORDINATES_FILE, function(error, flights) {
     d3version3.selectAll(".pppp"+1)
       .transition().duration(5)
       .style("stroke", "grey")
-      .style("opacity", "0.1")
+      .style("opacity", "0.1") 
     d3version3.selectAll(".pppp"+2)
       .transition().duration(5)
       .style("stroke", "grey")
