@@ -74,19 +74,19 @@ d3version3.tsv(PCA_FILE, function(error, data) {
 		.attr("fill", function(d, i) {
 			if (d.A == 1 && d.D < 5) {
 				return "pink";
-			} else if (d.A == 1 && d.D >= 5) {
+			} else if (d.A == 3 && d.D >= 5) {
 				return "yellow";
 			} else if (d.A == 2 && d.D < 5){
 				return "pink";
-			} else if (d.A == 2 && d.D >= 5){
+			} else if (d.A == 4 && d.D >= 5){
 				return "yellow";
 			} else if (d.A == 3 && d.D < 5){
 				return "green";
-			} else if (d.A == 3 && d.D >= 5){
+			} else if (d.A == 2 && d.D >= 5){
 				return "orange";
 			} else if (d.A == 4 && d.D < 5){
 				return "green";
-			} else if (d.A == 4 && d.D >= 5){
+			} else if (d.A == 1 && d.D >= 5){
 				return "orange";
 			} else {
 				return "black"
@@ -109,8 +109,40 @@ d3version3.tsv(PCA_FILE, function(error, data) {
 		})*/
 		.attr("r", 3.5)
 		.attr("cx", function(d) { return x(d.P1); })
-		.attr("cy", function(d) { return y(d.P2); });
-    
+		.attr("cy", function(d) { return y(d.P2); })
+		.on("mouseover",function(){ d3version4.select(this).style("cursor", "pointer");    })
+      
+    	.on("click",function(d){ 
+			console.log(d);
+    		if ((d.A == 1 && d.D < 5) || ( d.A == 2 && d.D < 5)){
+				d3version4.selectAll("#parallel-div .background path").attr("class","backg")
+				d3version4.selectAll("#parallel-div .foreground path").attr("class","backg")
+				console.log(d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity < 3 && j.End_Time < 5 }))
+				var par_state = d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity < 3 && j.End_Time < 5 }).attr("class","foregroundingd1")
+			}else if ((d.A == 3 && d.D >= 5) || ( d.A == 4 && d.D >= 5)){
+				d3version4.selectAll("#parallel-div .background path").attr("class","backg")
+				d3version4.selectAll("#parallel-div .foreground path").attr("class","backg")
+				console.log(d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity > 2  && j.End_Time >= 5 }))
+				var par_state = d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity > 2 && j.End_Time < 5 }).attr("class","foregroundingd2")
+			}else if ((d.A == 3 && d.D < 5) || ( d.A == 4 && d.D < 5)){
+				d3version4.selectAll("#parallel-div .background path").attr("class","backg")
+				d3version4.selectAll("#parallel-div .foreground path").attr("class","backg")
+				console.log(d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity > 2 && j.End_Time < 5 }))
+				var par_state = d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity < 3 && j.End_Time < 5 }).attr("class","foregroundingd3")
+			}else{
+				d3version4.selectAll("#parallel-div .background path").attr("class","backg")
+				d3version4.selectAll("#parallel-div .foreground path").attr("class","backg")
+        		var par_state = d3version4.selectAll("#parallel-div .foreground path").filter(function(j){ return j.Severity < 3 && j.End_Time >= 5  }).attr("class","foregroundingd4")
+				console.log(d3version4.selectAll("#parallel-div .background path").filter(function(j){  console.log(j.Severity < 2 && j.End_Time >= 5);return j.Severity < 2 && j.End_Time >= 5 }))
+			}
+		})
+		.on("dblclick", function(){
+		d3version4.selectAll("#parallel-div .background path").attr("class","foreground")
+        d3version4.selectAll("#parallel-div .foreground path[stroke=yellow]").attr("class","pppp4")
+        d3version4.selectAll("#parallel-div .foreground path[stroke=blue]").attr("class","pppp3")
+        d3version4.selectAll("#parallel-div .foreground path[stroke=green]").attr("class","pppp2")
+        d3version4.selectAll("#parallel-div .foreground path[stroke=red]").attr("class","pppp1")
+		});
         //Legend style
         var colorz = d3version4.scaleOrdinal()
                   .domain([1,2,3,4])
@@ -126,12 +158,9 @@ d3version3.tsv(PCA_FILE, function(error, data) {
               .attr("x", width )
               .attr("width", 15)
               .attr("height", 15)
-              .style("fill", colorz)
-              .on("mouseover",function(){ d3version4.select(this).style("cursor", "pointer");    })
-      
-    		  .on("click",function(d){ 
-    			console.log(d);
-    		});
+              .style("fill", colorz);
+              
+    		
 
           legend.append("text")
               .attr("x", width - 10)
@@ -146,7 +175,7 @@ d3version3.tsv(PCA_FILE, function(error, data) {
 				  } else if(d == 3) {
 					  return "Severity > 2 & Weekdays";
 				  } else if(d == 4) {
-				  	  return "Severity < 2 & Weekend days";
+				  	  return "Severity < 3 & Weekend days";
 				  }
 				  
 				  return "";

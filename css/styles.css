@@ -45,6 +45,27 @@ body {
     stroke: orange !important;
     stroke-width: 1px !important;
 }
+
+.foregroundingd1{
+    fill: none;
+    stroke: pink !important;
+    stroke-width: 1px !important;
+}
+.foregroundingd2{
+    fill: none;
+    stroke: yellow !important;
+    stroke-width: 1px !important;
+}
+.foregroundingd3{
+    fill: none;
+    stroke: green !important;
+    stroke-width: 1px !important;
+}
+.foregroundingd4{
+    fill: none;
+    stroke: orange !important;
+    stroke-width: 1px !important;
+}
 .backg{
     fill: none;
     display: none;
