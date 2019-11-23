@@ -23,7 +23,7 @@ def save_pca(df):
     
     print(principalDf.head(5))
 
-    with open("pca_viz.tsv", "w") as f:
+    with open("FDB/pca_viz.tsv", "w") as f:
         a = principalDf.values
         mat = np.matrix(a)
         
@@ -37,7 +37,7 @@ def save_pca(df):
 
 features = ['State','End_Time','Severity','Temperature(F)','Wind_Chill(F)','Visibility(mi)','Precipitation(in)']
 
-filename = "outfile2.csv"
+filename = "FDB/outfile2.csv"
 n = sum(1 for line in open(filename))-1
 s = 25000    	
 skip = sorted(random.sample(range(1,n+1),n-s))
@@ -47,9 +47,9 @@ new_f = f[features]
 ''' anno-mese-giorno 2018-02-08 
 x = datetime.datetime(2018, 2, 3) --> formato che bisogna passare
 '''
-new_f.to_csv("finalFile3.csv", index=False)
+new_f.to_csv("FDB/finalFile3.csv", index=False)
 
-with open('finalFile3.csv','r') as fin,  open ('pca.csv','w') as fout:
+with open('FDB/finalFile3.csv','r') as fin,  open ('FDB/pca.csv','w') as fout:
     writer = csv.writer(fout, delimiter=',')     
    
     col = next(csv.reader(fin, delimiter=','))
@@ -86,6 +86,6 @@ with open('finalFile3.csv','r') as fin,  open ('pca.csv','w') as fout:
     		
     		writer.writerow(row)
 
-f=pd.read_csv('pca.csv')  	
+f=pd.read_csv('FDB/pca.csv')  	
 
 save_pca(f.loc[:, features[1:]]) 

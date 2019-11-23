@@ -1,6 +1,6 @@
 import pandas as pd
 for i in range(1,13):
-	f = pd.read_csv("state_pair_month.csv")
+	f = pd.read_csv("FDB/state_pair_month.csv")
 	f['Start_Time'] = f['Start_Time'].apply(str)
 	f['Day'] = f['Day'].apply(str)
 	f['Night'] = f['Night'].apply(str)

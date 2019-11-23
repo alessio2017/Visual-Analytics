@@ -137,7 +137,7 @@ with open('US_Accidents_May19.csv','r') as fin,  open ('outfile2.csv','w') as fo
     		row[4] = (row[4])[5:7]
     		writer.writerow(row)
 '''		
-filename = "outfile2.csv"
+filename = "FDB/outfile2.csv"
 n = sum(1 for line in open(filename))-1
 s = 9000    	
 skip = sorted(random.sample(range(1,n+1),n-s))
@@ -148,10 +148,10 @@ keep_col = ['State','Severity','End_Time','Temperature(F)','Wind_Chill(F)','Visi
 
 new_f = f[keep_col]
 
-new_f.to_csv("finalFile2.csv", index=False)
+new_f.to_csv("FDB/finalFile2.csv", index=False)
 
 
-with open('finalFile2.csv','r') as fin,  open ('1k-6num-attrs.csv','w') as fout:
+with open('FDB/finalFile2.csv','r') as fin,  open ('FDB/1k-6num-attrs.csv','w') as fout:
     writer = csv.writer(fout, delimiter=',')     
    
     col = next(csv.reader(fin, delimiter=','))
