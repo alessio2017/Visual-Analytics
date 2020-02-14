@@ -268,10 +268,10 @@ function handleMouseOver(e){
     //var gto = d3version3.selectAll(".bar").filter(function(d){ return jsonStates[d.s] == e.properties.name }).style("fill","black")
     if(selected[e.properties.name]){
         d3version4.selectAll("#parallel-div .background path").attr("class","foreground")
-        d3version4.selectAll("#parallel-div .foreground path[stroke=yellow]").attr("class","pppp4")
+        d3version4.selectAll("#parallel-div .foreground path[stroke=maroon]").attr("class","pppp4")
         d3version4.selectAll("#parallel-div .foreground path[stroke=blue]").attr("class","pppp3")
         d3version4.selectAll("#parallel-div .foreground path[stroke=green]").attr("class","pppp2")
-        d3version4.selectAll("#parallel-div .foreground path[stroke=red]").attr("class","pppp1")
+        d3version4.selectAll("#parallel-div .foreground path[stroke=fuchsia]").attr("class","pppp1")
         d3version4.selectAll("#parallel-div .foreground path").style(function(d,i){
         	console.log(d)
         })
@@ -286,7 +286,7 @@ function handleMouseOver(e){
         for(i in jsonStates){
             selected[jsonStates[i]] = false
         }   
-        var par_state = d3version4.selectAll("#parallel-div .background path").filter(function(d){ return jsonStates[d.State] == e.properties.name }).attr("class","foregrounding")
+        var par_state = d3version4.selectAll("#parallel-div .background path").filter(function(d){ console.log(d); return jsonStates[d.State] == e.properties.name }).attr("class","foregrounding") //we have to comment this line to work the brush
         var par_state = d3version4.selectAll("#parallel-div .foreground path").filter(function(d){ return jsonStates[d.State] == e.properties.name }).attr("class","foregrounding")
         selected[e.properties.name] = true
     }

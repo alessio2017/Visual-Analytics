@@ -118,30 +118,30 @@ d3version3.tsv(PCA_FILE, function(error, data) {
 				d3version4.selectAll("#parallel-div .background path").attr("class","backg")
 				d3version4.selectAll("#parallel-div .foreground path").attr("class","backg")
 				console.log(d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity < 3 && j.End_Time < 5 }))
-				var par_state = d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity < 3 && j.End_Time < 5 }).attr("class","foregroundingd1")
+				var par_state = d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity < 3 && j.End_Time < 5 }).attr("class","foregroundingd1") //putting .foreground the brush will function
 			}else if ((d.A == 3 && d.D >= 5) || ( d.A == 4 && d.D >= 5)){
 				d3version4.selectAll("#parallel-div .background path").attr("class","backg")
 				d3version4.selectAll("#parallel-div .foreground path").attr("class","backg")
 				console.log(d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity > 2  && j.End_Time >= 5 }))
-				var par_state = d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity > 2 && j.End_Time < 5 }).attr("class","foregroundingd2")
+				var par_state = d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity > 2 && j.End_Time >= 5 }).attr("class","foregroundingd2")
 			}else if ((d.A == 3 && d.D < 5) || ( d.A == 4 && d.D < 5)){
 				d3version4.selectAll("#parallel-div .background path").attr("class","backg")
 				d3version4.selectAll("#parallel-div .foreground path").attr("class","backg")
 				console.log(d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity > 2 && j.End_Time < 5 }))
-				var par_state = d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity < 3 && j.End_Time < 5 }).attr("class","foregroundingd3")
+				var par_state = d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity > 2 && j.End_Time < 5 }).attr("class","foregroundingd3")
 			}else{
 				d3version4.selectAll("#parallel-div .background path").attr("class","backg")
 				d3version4.selectAll("#parallel-div .foreground path").attr("class","backg")
-        		var par_state = d3version4.selectAll("#parallel-div .foreground path").filter(function(j){ return j.Severity < 3 && j.End_Time >= 5  }).attr("class","foregroundingd4")
-				console.log(d3version4.selectAll("#parallel-div .background path").filter(function(j){  console.log(j.Severity < 2 && j.End_Time >= 5);return j.Severity < 2 && j.End_Time >= 5 }))
+        		var par_state = d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity < 3 && j.End_Time >= 5  }).attr("class","foregroundingd4")
+				console.log(d3version4.selectAll("#parallel-div .background path").filter(function(j){  return j.Severity < 3 && j.End_Time >= 5 }))
 			}
 		})
 		.on("dblclick", function(){
 		d3version4.selectAll("#parallel-div .background path").attr("class","foreground")
-        d3version4.selectAll("#parallel-div .foreground path[stroke=yellow]").attr("class","pppp4")
+        d3version4.selectAll("#parallel-div .foreground path[stroke=maroon]").attr("class","pppp4")
         d3version4.selectAll("#parallel-div .foreground path[stroke=blue]").attr("class","pppp3")
         d3version4.selectAll("#parallel-div .foreground path[stroke=green]").attr("class","pppp2")
-        d3version4.selectAll("#parallel-div .foreground path[stroke=red]").attr("class","pppp1")
+        d3version4.selectAll("#parallel-div .foreground path[stroke=fuchsia]").attr("class","pppp1")
 		});
         //Legend style
         var colorz = d3version4.scaleOrdinal()
@@ -189,7 +189,7 @@ d3version3.tsv(PCA_FILE, function(error, data) {
 d3version3.csv(PARALLEL_COORDINATES_FILE, function(error, flights) {
 	var color3 = d3version3.scale.ordinal()
   				.domain([1,2,3,4])
-  				.range(['red','green','blue','yellow']);
+  				.range(['fuchsia','green','blue','maroon']);
   				
 	var margin = {top: 30, right: 10, bottom: 10, left: 10},
 	width = 1100 - margin.left - margin.right,

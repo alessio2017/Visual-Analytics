@@ -18,7 +18,7 @@ var yAxis = d3version4.axisLeft(y)
     
 var colorx = d3version3.scale.ordinal()
   				.domain(["CLEAR","OVERCAST","FOG","RAIN","SNOW","FREEZING"])
-  				.range(['red','green','blue','yellow','pink','brown']);
+  				.range(['red','green','blue','#ffe119','pink','fuchsia']);
   				
 d3version4.csv("FDB/1-6condition.csv", function(error, data) {
 
