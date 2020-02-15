@@ -55,7 +55,7 @@ d3version4.select("label")
   .property("checked", false); 
 
 d3version3.csv("FDB/"+month+".csv", function(error, data) {
-console.log(month);
+//console.log(month);
   if (error) throw error;
 
   color.domain(d3version4.keys(data[0]).filter(function(key) { return key !== "State"; }));
@@ -359,7 +359,7 @@ console.log(month);
 
     statex.selectAll(".class" + active_link)
          .sort(function(a, b) { 
-          console.log(x0(a.mystate) - x0(b.mystate))
+          //console.log(x0(a.mystate) - x0(b.mystate))
             return x0(a.mystate) - x0(b.mystate); 
           });
 
@@ -496,7 +496,7 @@ $(document).ready(function() {
 
     
 $("#usa_svgg path").on("mouseover",function(e){
-    console.log("Ddd")
+    //console.log("Ddd")
     })
 });
     

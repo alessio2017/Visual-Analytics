@@ -241,7 +241,7 @@ d3version3.csv(PARALLEL_COORDINATES_FILE, function(error, flights) {
 	
 
 	// Extract the list of dimensions and create a scale for each.
-	console.log(d3version3.keys(flights[0]))
+	//console.log(d3version3.keys(flights[0]))
 	x.domain(dimensions = d3version3.keys(flights[0]).filter(function(d) {
 		return d != "State" && (y[d] = d3version3.scale.linear()
 		.domain(d3version3.extent(flights, function(p) { return +p[d]; }))
@@ -317,7 +317,12 @@ d3version3.csv(PARALLEL_COORDINATES_FILE, function(error, flights) {
 	.append("text")
 	.style("text-anchor", "middle")
 	.attr("y", -9)
-	.text(function(d) { return d; });
+	.text(function(d) { 
+	if(d=="End_Time"){
+		return "Day" 
+	}else{ 
+		return d; }
+	});
 	
 	// Add and store a brush for each axis.
 	g.append("g")
@@ -374,8 +379,8 @@ d3version3.csv(PARALLEL_COORDINATES_FILE, function(error, flights) {
       .style("opacity", "0.1")
     // Second the hovered specie takes its color
     //d3version3.selectAll(this.parentNode).attr("class " + selected_severity)
-    console.log(d3version3.selectAll(".pppp" + selected_severity))
-    console.log(color3(selected_severity));
+    /*console.log(d3version3.selectAll(".pppp" + selected_severity))
+    console.log(color3(selected_severity));*/
     d3version3.selectAll(".pppp" + selected_severity)
       .transition().duration(50)
       .style("stroke", color3(d))
