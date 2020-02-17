@@ -286,7 +286,7 @@ function handleMouseOver(e){
         for(i in jsonStates){
             selected[jsonStates[i]] = false
         }   
-        var par_state = d3version4.selectAll("#parallel-div .background path").filter(function(d){ console.log(d); return jsonStates[d.State] == e.properties.name }).attr("class","foregrounding") //we have to comment this line to work the brush
+        //var par_state = d3version4.selectAll("#parallel-div .background path").filter(function(d){ console.log(d); return jsonStates[d.State] == e.properties.name }).attr("class","foregrounding") //we have to comment this line to work the brush
         var par_state = d3version4.selectAll("#parallel-div .foreground path").filter(function(d){ return jsonStates[d.State] == e.properties.name }).attr("class","foregrounding")
         selected[e.properties.name] = true
     }

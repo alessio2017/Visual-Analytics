@@ -113,27 +113,27 @@ d3version3.tsv(PCA_FILE, function(error, data) {
 		.on("mouseover",function(){ d3version4.select(this).style("cursor", "pointer");    })
       
     	.on("click",function(d){ 
-			console.log(d);
+			//console.log(d);
     		if ((d.A == 1 && d.D < 5) || ( d.A == 2 && d.D < 5)){
 				d3version4.selectAll("#parallel-div .background path").attr("class","backg")
 				d3version4.selectAll("#parallel-div .foreground path").attr("class","backg")
-				console.log(d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity < 3 && j.End_Time < 5 }))
-				var par_state = d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity < 3 && j.End_Time < 5 }).attr("class","foregroundingd1") //putting .foreground the brush will function
+				//console.log(d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity < 3 && j.End_Time < 5 }))
+				var par_state = d3version4.selectAll("#parallel-div .foreground path").filter(function(j){ return j.Severity < 3 && j.End_Time < 5 }).attr("class","foregroundingd1") //putting .foreground the brush will function
 			}else if ((d.A == 3 && d.D >= 5) || ( d.A == 4 && d.D >= 5)){
 				d3version4.selectAll("#parallel-div .background path").attr("class","backg")
 				d3version4.selectAll("#parallel-div .foreground path").attr("class","backg")
-				console.log(d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity > 2  && j.End_Time >= 5 }))
-				var par_state = d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity > 2 && j.End_Time >= 5 }).attr("class","foregroundingd2")
+				//console.log(d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity > 2  && j.End_Time >= 5 }))
+				var par_state = d3version4.selectAll("#parallel-div .foreground path").filter(function(j){ return j.Severity > 2 && j.End_Time >= 5 }).attr("class","foregroundingd2")
 			}else if ((d.A == 3 && d.D < 5) || ( d.A == 4 && d.D < 5)){
 				d3version4.selectAll("#parallel-div .background path").attr("class","backg")
 				d3version4.selectAll("#parallel-div .foreground path").attr("class","backg")
-				console.log(d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity > 2 && j.End_Time < 5 }))
-				var par_state = d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity > 2 && j.End_Time < 5 }).attr("class","foregroundingd3")
+				//console.log(d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity > 2 && j.End_Time < 5 }))
+				var par_state = d3version4.selectAll("#parallel-div .foreground path").filter(function(j){ return j.Severity > 2 && j.End_Time < 5 }).attr("class","foregroundingd3")
 			}else{
 				d3version4.selectAll("#parallel-div .background path").attr("class","backg")
 				d3version4.selectAll("#parallel-div .foreground path").attr("class","backg")
-        		var par_state = d3version4.selectAll("#parallel-div .background path").filter(function(j){ return j.Severity < 3 && j.End_Time >= 5  }).attr("class","foregroundingd4")
-				console.log(d3version4.selectAll("#parallel-div .background path").filter(function(j){  return j.Severity < 3 && j.End_Time >= 5 }))
+        		var par_state = d3version4.selectAll("#parallel-div .foreground path").filter(function(j){ return j.Severity < 3 && j.End_Time >= 5  }).attr("class","foregroundingd4")
+				//console.log(d3version4.selectAll("#parallel-div .background path").filter(function(j){  return j.Severity < 3 && j.End_Time >= 5 }))
 			}
 		})
 		.on("dblclick", function(){
