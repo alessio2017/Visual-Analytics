@@ -1,7 +1,7 @@
 var margin = {top: 40, right: 20, bottom: 30, left: 40},
 
     width = 900  - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+    height = 440 - margin.top - margin.bottom;
 
 var x = d3version4.scaleBand()
     .range([0, width], .1);
@@ -18,7 +18,7 @@ var yAxis = d3version4.axisLeft(y)
     
 var colorx = d3version3.scale.ordinal()
   				.domain(["CLEAR","OVERCAST","FOG","RAIN","SNOW","FREEZING"])
-  				.range(['red','green','blue','#ffe119','pink','fuchsia']);
+  				.range(['#1b9e77','#d95f02','#7570b3','#e7298a','#66a61e','#e6ab02']);
   				
 d3version4.csv("FDB/1-6condition.csv", function(error, data) {
 
@@ -80,6 +80,7 @@ d3version4.csv("FDB/1-6condition.csv", function(error, data) {
             .attr("y", 6)
             .attr("dy", "1em")
             .style("text-anchor", "end")
+            .style("fill", "white")
       		.text("# of road accidents");
     
 	  	scatter.selectAll(".dot1")

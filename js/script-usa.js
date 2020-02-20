@@ -268,10 +268,10 @@ function handleMouseOver(e){
     //var gto = d3version3.selectAll(".bar").filter(function(d){ return jsonStates[d.s] == e.properties.name }).style("fill","black")
     if(selected[e.properties.name]){
         d3version4.selectAll("#parallel-div .background path").attr("class","foreground")
-        d3version4.selectAll("#parallel-div .foreground path[stroke=maroon]").attr("class","pppp4")
-        d3version4.selectAll("#parallel-div .foreground path[stroke=blue]").attr("class","pppp3")
-        d3version4.selectAll("#parallel-div .foreground path[stroke=green]").attr("class","pppp2")
-        d3version4.selectAll("#parallel-div .foreground path[stroke=fuchsia]").attr("class","pppp1")
+        d3version4.selectAll("#parallel-div .foreground path[stroke='#a6d854']").attr("class","pppp4")
+        d3version4.selectAll("#parallel-div .foreground path[stroke='#377eb8']").attr("class","pppp3")
+        d3version4.selectAll("#parallel-div .foreground path[stroke='#a65628']").attr("class","pppp2")
+        d3version4.selectAll("#parallel-div .foreground path[stroke='#e5c494']").attr("class","pppp1")
         d3version4.selectAll("#parallel-div .foreground path").style(function(d,i){
         	console.log(d)
         })

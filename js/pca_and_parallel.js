@@ -73,21 +73,21 @@ d3version3.tsv(PCA_FILE, function(error, data) {
 		
 		.attr("fill", function(d, i) {
 			if (d.A == 1 && d.D < 5) {
-				return "pink";
+				return "#beaed4";
 			} else if (d.A == 3 && d.D >= 5) {
-				return "yellow";
+				return "#ffff99";
 			} else if (d.A == 2 && d.D < 5){
-				return "pink";
+				return "#beaed4";
 			} else if (d.A == 4 && d.D >= 5){
-				return "yellow";
+				return "#ffff99";
 			} else if (d.A == 3 && d.D < 5){
-				return "green";
+				return "#7fc97f";
 			} else if (d.A == 2 && d.D >= 5){
-				return "orange";
+				return "#fdc086";
 			} else if (d.A == 4 && d.D < 5){
-				return "green";
+				return "#7fc97f";
 			} else if (d.A == 1 && d.D >= 5){
-				return "orange";
+				return "#fdc086";
 			} else {
 				return "black"
 			}
@@ -138,15 +138,15 @@ d3version3.tsv(PCA_FILE, function(error, data) {
 		})
 		.on("dblclick", function(){
 		d3version4.selectAll("#parallel-div .background path").attr("class","foreground")
-        d3version4.selectAll("#parallel-div .foreground path[stroke=maroon]").attr("class","pppp4")
-        d3version4.selectAll("#parallel-div .foreground path[stroke=blue]").attr("class","pppp3")
-        d3version4.selectAll("#parallel-div .foreground path[stroke=green]").attr("class","pppp2")
-        d3version4.selectAll("#parallel-div .foreground path[stroke=fuchsia]").attr("class","pppp1")
+        d3version4.selectAll("#parallel-div .foreground path[stroke='#a6d854']").attr("class","pppp4")
+        d3version4.selectAll("#parallel-div .foreground path[stroke='#377eb8']").attr("class","pppp3")
+        d3version4.selectAll("#parallel-div .foreground path[stroke='#a65628']").attr("class","pppp2")
+        d3version4.selectAll("#parallel-div .foreground path[stroke='#e5c494']").attr("class","pppp1")
 		});
         //Legend style
         var colorz = d3version4.scaleOrdinal()
                   .domain([1,2,3,4])
-                  .range(["pink","yellow","green","orange"])
+                  .range(["#beaed4","#ffff99","#7fc97f","#fdc086"])
 
         var legend = svg.selectAll(".legend")
               .data([1,2,3,4])
@@ -189,8 +189,8 @@ d3version3.tsv(PCA_FILE, function(error, data) {
 d3version3.csv(PARALLEL_COORDINATES_FILE, function(error, flights) {
 	var color3 = d3version3.scale.ordinal()
   				.domain([1,2,3,4])
-  				.range(['fuchsia','green','blue','maroon']);
-  				
+				.range(['#e5c494','#a65628','#377eb8','#a6d854']);  
+								
 	var margin = {top: 30, right: 10, bottom: 10, left: 10},
 	width = 1100 - margin.left - margin.right,
 	height = 400 - margin.top - margin.bottom;
@@ -235,7 +235,7 @@ d3version3.csv(PARALLEL_COORDINATES_FILE, function(error, flights) {
 
 	var svg = d3version3.select("#parallel-div").append("svg")
 	.attr("width", width + margin.left + margin.right)
-	.attr("height", height + margin.top + margin.bottom)
+	.attr("height", height + margin.top + margin.bottom + 2)
 	.append("g")
 	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 	
@@ -363,19 +363,19 @@ d3version3.csv(PARALLEL_COORDINATES_FILE, function(error, flights) {
     // first every group turns grey
     d3version3.selectAll(".pppp"+1)
       .transition().duration(5)
-      .style("stroke", "grey")
+      .style("stroke", "#454545")
       .style("opacity", "0.1") 
     d3version3.selectAll(".pppp"+2)
       .transition().duration(5)
-      .style("stroke", "grey")
+      .style("stroke", "#454545")
       .style("opacity", "0.1")
     d3version3.selectAll(".pppp"+3)
       .transition().duration(5)
-      .style("stroke", "grey")
+      .style("stroke", "#454545")
       .style("opacity", "0.1")
     d3version3.selectAll(".pppp"+4)
       .transition().duration(5)
-      .style("stroke", "grey")
+      .style("stroke", "#454545")
       .style("opacity", "0.1")
     // Second the hovered specie takes its color
     //d3version3.selectAll(this.parentNode).attr("class " + selected_severity)

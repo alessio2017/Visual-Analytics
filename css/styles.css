@@ -1,43 +1,44 @@
 
 body {
-  font: 10px Arial, Helvetica, sans-serif;
-  margin: 0;  
+  	font: 10px Arial, Helvetica, sans-serif;
+  	margin: 0;  
+  	background: black;
 }
 
 .topnav {
-  overflow: hidden;
-  background-color: rgb(82,162,156);
-  margin: 0 auto;
-  background-color: #4686a0;
-  color: rgba(255, 255, 255, 0.75);
-  background-attachment: fixed,							fixed,							fixed;
-  background-image: url("images/overlay2.png"), url("images/overlay3.svg"), linear-gradient(45deg, #9dc66b 5%, #4fa49a 30%, #4361c2);
-  background-position: top left,						center center,					center center;
-  background-size: auto,							cover,							cover;
-  position: relative;
-  text-align: center;
+  	overflow: hidden;
+  	background-color: rgb(82,162,156);
+  	margin: 0 auto;
+  	background-color: #4686a0;
+  	color: rgba(255, 255, 255, 0.75);
+  	background-attachment: fixed,							fixed,							fixed;
+  	background-image: url("images/overlay2.png"), url("images/overlay3.svg"), linear-gradient(45deg, #9dc66b 5%, #4fa49a 30%, #4361c2);
+  	background-position: top left,						center center,					center center;
+  	background-size: auto,							cover,							cover;
+  	position: relative;
+  	text-align: center;
 }
 
 .axis path,
 .axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
+  	fill: none;
+  	stroke: #FFF;
+  	shape-rendering: crispEdges;
 }
 
 .dot {
-  stroke: black;
+  	stroke: black;
 }
 
 .background path {
-  fill: none;
-  stroke: #ddd;
+  	fill: none;
+  	stroke: #454545;
   
 }
 
 .foreground path {
-  fill: none;
-  /*stroke: steelblue;*/
+  	fill: none;
+  	/*stroke: steelblue;*/
 }
 
 .foregrounding{
@@ -48,22 +49,22 @@ body {
 
 .foregroundingd1{
     fill: none;
-    stroke: pink !important;
+    stroke: #beaed4 !important;
     stroke-width: 1px !important;
 }
 .foregroundingd2{
     fill: none;
-    stroke: yellow !important;
+    stroke: #ffff99 !important;
     stroke-width: 1px !important;
 }
 .foregroundingd3{
     fill: none;
-    stroke: green !important;
+    stroke: #7fc97f !important;
     stroke-width: 1px !important;
 }
 .foregroundingd4{
     fill: none;
-    stroke: orange !important;
+    stroke: #fdc086 !important;
     stroke-width: 1px !important;
 }
 .backg{
@@ -75,26 +76,28 @@ body {
 }
 
 .brush .extent {
-  fill-opacity: .3;
-  stroke: #fff;
-  shape-rendering: crispEdges;
+  	fill-opacity: .3;
+  	stroke: #fff;
+  	shape-rendering: crispEdges;
 }
 
 .axis text {
-  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
-  cursor: move;
+  	fill:white;
+  	/*text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;*/
+  	cursor: move;
 }
 
 .bar {
-  fill: rgb(99, 148, 186);
+  	fill: rgb(99, 148, 186);
 }
 
 .bar:hover {
-  fill: rgb(202, 75, 65) ;
+  	fill: rgb(202, 75, 65) ;
 }
 
 /* Legend Position Style */
 .legend {
+	fill:white;
 	position:absolute;
 	left:800px;
 	top:350px;
@@ -107,67 +110,75 @@ path:hover {
 }
 
 div.tooltip {
-  position: absolute;
-  text-align: center;
-  width: 65px;
-  height: 25px;
-  padding: 2px;
-  font: 12px sans-serif;
-  background: lightsteelblue;
-  border: 0px;
-  border-radius: 8px;
-  pointer-events: none;
+  	position: absolute;
+  	text-align: center;
+  	width: 65px;
+  	height: 25px;
+  	padding: 2px;
+  	font: 12px sans-serif;
+  	background: lightsteelblue;
+  	border: 0px;
+  	border-radius: 8px;
+  	pointer-events: none;
 } 
 
 
 .axis path,
 .axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
+  	fill: none;
+  	stroke: #FFF;
+  	shape-rendering: crispEdges;
 }
 
 .bar {
-  fill: steelblue;
+  	fill: steelblue;
 }
 
 div.tooltip1 {
-  position: absolute;
-  text-align: center;
-  width: 65px;
-  height: 40px;
-  padding: 2px;
-  font: 12px sans-serif;
-  background: lightsteelblue;
-  border: 0px;
-  border-radius: 8px;
-  pointer-events: none;
+  	position: absolute;
+  	text-align: center;
+  	width: 65px;
+  	height: 40px;
+  	padding: 2px;
+  	font: 12px sans-serif;
+  	background: lightsteelblue;
+  	border: 0px;
+  	border-radius: 8px;
+  	pointer-events: none;
 } 
 
 
 div.tooltip2 {
-  position: absolute;
-  text-align: center;
-  width: 65px;
-  height: 30px;
-  padding: 2px;
-  font: 12px sans-serif;
-  background: lightsteelblue;
-  border: 0px;
-  border-radius: 8px;
-  pointer-events: none;
+  	position: absolute;
+  	text-align: center;
+  	width: 65px;
+  	height: 30px;
+  	padding: 2px;
+  	font: 12px sans-serif;
+  	background: lightsteelblue;
+  	border: 0px;
+  	border-radius: 8px;
+  	pointer-events: none;
 } 
 
 label {
-  position: absolute;
-  top: 150px;
-  right: 30px;
-  color: #D8D8D8;
+  	position: absolute;
+  	top: 150px;
+  	right: 30px;
+  	color: #D8D8D8;
 }
 
 .stack{
-  width: 930px; 
-  height: 443px;
+  	width: 930px; 
+  	height: 443px;
+}
+
+#footer{
+ position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   
 }
 /*
 .c{
