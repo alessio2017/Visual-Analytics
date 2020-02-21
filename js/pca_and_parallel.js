@@ -186,7 +186,7 @@ d3version3.tsv(PCA_FILE, function(error, data) {
 });
 
 
-d3version3.csv(PARALLEL_COORDINATES_FILE, function(error, flights) {
+d3version3.csv(PARALLEL_COORDINATES_FILE, function(error, accidents) {
 	var color3 = d3version3.scale.ordinal()
   				.domain([1,2,3,4])
 				.range(['#e5c494','#a65628','#377eb8','#a6d854']);  
@@ -241,10 +241,10 @@ d3version3.csv(PARALLEL_COORDINATES_FILE, function(error, flights) {
 	
 
 	// Extract the list of dimensions and create a scale for each.
-	//console.log(d3version3.keys(flights[0]))
-	x.domain(dimensions = d3version3.keys(flights[0]).filter(function(d) {
+	//console.log(d3version3.keys(accidents[0]))
+	x.domain(dimensions = d3version3.keys(accidents[0]).filter(function(d) {
 		return d != "State" && (y[d] = d3version3.scale.linear()
-		.domain(d3version3.extent(flights, function(p) { return +p[d]; }))
+		.domain(d3version3.extent(accidents, function(p) { return +p[d]; }))
 		.range([height, 0]));
 	}));
 
@@ -252,7 +252,7 @@ d3version3.csv(PARALLEL_COORDINATES_FILE, function(error, flights) {
 	background = svg.append("g")
 	.attr("class", "background")
 	.selectAll("path")
-	.data(flights)
+	.data(accidents)
 	.enter()
 	.append("path")
 	.attr("d", path);
@@ -261,14 +261,14 @@ d3version3.csv(PARALLEL_COORDINATES_FILE, function(error, flights) {
 	/*foreground = svg.append("g")
 	.attr("class", "foreground")
 	.selectAll("path")
-	.data(flights)
+	.data(accidents)
 	.enter().append("path")
 	.attr("d", path);*/
 	
 	foreground = svg.append('svg:g')
   	.attr('class', 'foreground')
   	.selectAll('path')
-  	.data(flights)
+  	.data(accidents)
   	.enter().append('svg:path') 
   	
   	.attr('d', path)
