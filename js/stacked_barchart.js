@@ -390,7 +390,7 @@ d3version3.csv("FDB/"+month+".csv", function(error, data) {
 
 
 
-},50);
+},0);
 }
 var statesDN = [];
 function loadDataMonth(month){
@@ -407,9 +407,9 @@ function loadDataMonth(month){
         
         dataValue[0] = +data[i].Day;
         
-         dataValue[1] = +data[i].Night;
+        dataValue[1] = +data[i].Night;
          
-         statesDN[dataState] = dataValue
+        statesDN[dataState] = dataValue
         
         
 	 }
