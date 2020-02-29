@@ -294,7 +294,8 @@ function handleMouseOver(e){
 }
 
 //Legend style
-    var zz = d3version4.scaleQuantile().domain([-0.27, -0.20, -0.1, -0.05, 0, 0.05, 0.1, 0.2, 0.5]).range(['#2166ac','#61a3cc','#bddaea','#f7f7f7','#fbc9b0','#e1785e','#b2182b'])
+    //var zz = d3version4.scaleQuantile().domain([-0.27, -0.20, -0.1, -0.05, 0, 0.05, 0.1, 0.2, 0.5]).range(['#2166ac','#61a3cc','#bddaea','#f7f7f7','#fbc9b0','#e1785e','#b2182b'])
+    var zz = d3version4.scaleQuantile().domain([-0.27, -0.20, -0.1, -0.05, 0, 0.05, 0.1, 0.2, 0.5]).range(['#2166ac','#347cb7','#61a3cc','#bddaea','#f7f7f7','#fbc9b0','#e1785e','#c4403b','#b2182b'])
     var legend = svg.selectAll(".legend")
           .data([-0.27, -0.20, -0.1, -0.05, 0, 0.05, 0.1, 0.2, 0.5])
           .enter().append("g")
